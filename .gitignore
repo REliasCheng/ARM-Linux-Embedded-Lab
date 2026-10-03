@@ -1,0 +1,37 @@
+# Editor and operating-system files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Logs and caches
+*.log
+*.tmp
+*.cache
+__pycache__/
+
+# Native and kernel build artifacts
+*.o
+*.a
+*.so
+*.ko
+*.mod
+*.mod.c
+*.cmd
+*.symvers
+*.order
+*.elf
+*.map
+
+# Boot, device-tree and filesystem artifacts
+*.bin
+*.img
+*.dtb
+*.dtbo
+*.itb
+*.uImage
+zImage
+Image
+rootfs/
+output/
+build/

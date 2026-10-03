@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">ARM Linux system overview</title>
+  <desc id="desc">Evidence-aware architecture from host integration inputs through boot, kernel, device interfaces, and RK3566 platform.</desc>
+  <rect width="1200" height="720" rx="28" fill="#111827"/>
+  <text x="600" y="62" text-anchor="middle" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="30" font-weight="700">ARM Linux System Integration Path</text>
+  <text x="600" y="94" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="16">Tspi-RK3566 · AArch64 · evidence-aware architecture review</text>
+
+  <g font-family="system-ui, sans-serif">
+    <rect x="100" y="128" width="760" height="76" rx="16" fill="#374151" stroke="#64748b" stroke-width="2"/>
+    <text x="130" y="160" fill="#f8fafc" font-size="20" font-weight="700">Build Inputs</text>
+    <text x="130" y="185" fill="#cbd5e1" font-size="15">AArch64 toolchain · U-Boot workflow · kernel tree · board description · rootfs</text>
+    <rect x="885" y="143" width="215" height="44" rx="22" fill="#1f2937" stroke="#64748b"/>
+    <text x="992" y="171" text-anchor="middle" fill="#cbd5e1" font-size="14">Reference only</text>
+
+    <path d="M480 204 V234" stroke="#60a5fa" stroke-width="4"/>
+    <path d="M470 226 L480 238 L490 226" fill="none" stroke="#60a5fa" stroke-width="4"/>
+
+    <rect x="100" y="244" width="760" height="76" rx="16" fill="#1d4ed8" stroke="#60a5fa" stroke-width="2"/>
+    <text x="130" y="276" fill="#ffffff" font-size="20" font-weight="700">Boot Layer</text>
+    <text x="130" y="301" fill="#dbeafe" font-size="15">Boot ROM / Rockchip loader → SPL / U-Boot → kernel image + DTB</text>
+    <rect x="885" y="259" width="215" height="44" rx="22" fill="#172554" stroke="#60a5fa"/>
+    <text x="992" y="287" text-anchor="middle" fill="#bfdbfe" font-size="14">Workflow reviewed</text>
+
+    <path d="M480 320 V350" stroke="#7dd3fc" stroke-width="4"/>
+    <path d="M470 342 L480 354 L490 342" fill="none" stroke="#7dd3fc" stroke-width="4"/>
+
+    <rect x="100" y="360" width="760" height="76" rx="16" fill="#0369a1" stroke="#7dd3fc" stroke-width="2"/>
+    <text x="130" y="392" fill="#ffffff" font-size="20" font-weight="700">Kernel and Device Description</text>
+    <text x="130" y="417" fill="#e0f2fe" font-size="15">Linux 4.19.232 module metadata · board DTS reference · external driver model</text>
+    <rect x="885" y="375" width="215" height="44" rx="22" fill="#082f49" stroke="#7dd3fc"/>
+    <text x="992" y="403" text-anchor="middle" fill="#bae6fd" font-size="14">Metadata reviewed</text>
+
+    <path d="M480 436 V466" stroke="#86efac" stroke-width="4"/>
+    <path d="M470 458 L480 470 L490 458" fill="none" stroke="#86efac" stroke-width="4"/>
+
+    <rect x="100" y="476" width="760" height="76" rx="16" fill="#047857" stroke="#86efac" stroke-width="2"/>
+    <text x="130" y="508" fill="#ffffff" font-size="20" font-weight="700">Platform Interfaces</text>
+    <text x="130" y="533" fill="#dcfce7" font-size="15">Character device · GPIO · SPI · block device · RK3566 peripheral boundary</text>
+    <rect x="885" y="491" width="215" height="44" rx="22" fill="#052e16" stroke="#86efac"/>
+    <text x="992" y="519" text-anchor="middle" fill="#bbf7d0" font-size="14">Source excluded</text>
+
+    <path d="M480 552 V582" stroke="#e2e8f0" stroke-width="4"/>
+    <path d="M470 574 L480 586 L490 574" fill="none" stroke="#e2e8f0" stroke-width="4"/>
+
+    <rect x="100" y="592" width="760" height="76" rx="16" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+    <text x="130" y="624" fill="#0f172a" font-size="20" font-weight="700">Userspace and Evidence</text>
+    <text x="130" y="649" fill="#334155" font-size="15">Rootfs / init · device-node access · Qt path · build and runtime evidence boundary</text>
+    <rect x="885" y="607" width="215" height="44" rx="22" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="992" y="635" text-anchor="middle" fill="#334155" font-size="14">Runtime not provided</text>
+  </g>
+</svg>
