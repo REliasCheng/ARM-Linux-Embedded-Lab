@@ -34,17 +34,17 @@ The exact frame format, state machine, syscall behavior and scenario expectation
 
 ### ARM64 and external module
 
-The [AArch64 toolchain file](cmake/aarch64-linux-gnu.cmake) builds real ARM64 Linux userspace ELF files from Ubuntu cross packages. CI checks `file`/`readelf` and executes the protocol test and PTY monitor under QEMU user mode. Commands and evidence boundaries are in [AArch64 verification](docs/aarch64-build-verification.md).
+The [AArch64 toolchain file](cmake/aarch64-linux-gnu.cmake) builds real ARM64 Linux userspace ELF files from Ubuntu cross packages. CI verified their architecture with `file`/`readelf` and executed the protocol test and PTY normal scenario under QEMU user mode. Commands and evidence boundaries are in [AArch64 verification](docs/aarch64-build-verification.md).
 
-The original [misc-device module](kernel/lab_echo.c) has a separate Kbuild path. CI attempts a real `.ko` build against installed Ubuntu x86_64 headers and records `file`, `readelf`, `modinfo` and a hash. It is never loaded. See [module boundary](docs/kernel-module-boundary.md).
+The original [misc-device module](kernel/lab_echo.c) has a separate Kbuild path. CI built a real x86_64 `.ko` against installed Ubuntu headers and recorded `file`, `readelf`, `modinfo` and a hash. It is never loaded. See [module boundary](docs/kernel-module-boundary.md).
 
 ## Evidence boundary
 
 | Layer | Current implementation |
 | --- | --- |
-| Linux Host | Real kernel PTY node and C device I/O; exact pass status is in CI |
-| AArch64 | Cross-compiled userspace ELF and QEMU userspace execution; exact pass status is in CI |
-| Host kernel module | External Kbuild source and CI job; build status requires actual `.ko` evidence |
+| Linux Host | Real kernel PTY node and C device I/O; GCC, Clang and application Sanitizer each passed 5/5 PR tests |
+| AArch64 | Cross-compiled userspace ELF and QEMU userspace protocol/PTY normal execution passed in PR CI |
+| Host kernel module | Real x86_64 external Kbuild `.ko` against packaged 6.8.0-147-generic headers; not loaded |
 | RK3566 | Historical Tspi-RK3566, `tspi-rk3566-user-v10-linux.dts` and excluded 4.19.232 module metadata only; no board boot, target driver, Device Tree or hardware verification |
 
 No course driver, vendor BSP/DTS, historical rootfs, toolchain archive, private credential or board artifact is copied into this repository. [Source provenance](docs/source-provenance.md) and [third-party notices](THIRD_PARTY_NOTICES.md) state the reuse limits. The original [boot flow](docs/boot-flow.md), [build environment](docs/build-environment.md), [Device Tree](docs/device-tree.md), [driver model](docs/driver-model.md) and [system architecture](docs/system-architecture.md) remain reference documents. [Verification](docs/verification.md) separates current Host evidence from historical material.

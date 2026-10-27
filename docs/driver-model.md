@@ -18,8 +18,11 @@
 ## Current Driver Status
 
 ```text
-DRIVER_SOURCE_PUBLIC=NO
-DRIVER_BUILD=NOT_PERFORMED
-DEVICE_BINDING=NOT_PROVIDED
-USERSPACE_RUNTIME=NOT_PROVIDED
+HISTORIC_COURSE_DRIVER_SOURCE_PUBLIC=NO
+ORIGINAL_MISC_MODULE_SOURCE_PUBLIC=YES
+ORIGINAL_MISC_MODULE_LOAD=NOT_PERFORMED
+RK3566_DEVICE_BINDING=NOT_PROVIDED
+HOST_PTY_USERSPACE_RUNTIME=VERIFIED_PR_CI_40440344040
 ```
+
+An original, separate [misc-device module](../kernel/lab_echo.c) passed the build-only x86_64 Host Kbuild job in [PR CI run 40440344040](https://github.com/REliasCheng/ARM-Linux-Embedded-Lab/actions/runs/40440344040). The real Host device I/O runtime uses the kernel's PTY driver; it does not exercise the new module or any RK3566 peripheral. The build ABI and no-load boundary are described in [module boundary](kernel-module-boundary.md).

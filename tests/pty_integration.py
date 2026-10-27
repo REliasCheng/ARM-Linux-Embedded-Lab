@@ -46,6 +46,8 @@ def main():
             first = sim.stdout.readline().strip()
             if not first.startswith("READY /dev/pts/"):
                 raise RuntimeError(f"invalid simulator readiness: {first}")
+            simulator_file.write((first + "\n").encode())
+            simulator_file.flush()
             device = first.split(" ", 1)[1]
             command = [*shlex.split(args.wrapper), str(args.monitor), "--device", device]
             if args.scenario == "malformed":
@@ -89,6 +91,12 @@ def main():
         finally:
             stop(monitor)
             stop(sim)
+            if sim is not None and sim.stdout is not None:
+                simulator_file.write(sim.stdout.read().encode())
+                simulator_file.flush()
+                sim.stdout.close()
+            if sim is not None and sim.stdin is not None:
+                sim.stdin.close()
             (root / "result.json").write_text(json.dumps({"scenario": args.scenario, "passed": passed,
                 "monitor_exit": monitor.returncode if monitor else None,
                 "simulator_exit": sim.returncode if sim else None}, indent=2) + "\n")

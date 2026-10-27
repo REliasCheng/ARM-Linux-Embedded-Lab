@@ -10,3 +10,5 @@
 | Course drivers, vendor BSP/DTS, historical RootFS, toolchain archives and third-party device assets | RIGHTS_UNVERIFIED | Excluded; possession does not establish authorship or public redistribution rights. |
 
 The historical material references `tspi-rk3566-user-v10-linux.dts` and excluded `.ko` metadata reporting `4.19.232` and AArch64. No matching board revision, prepared kernel tree or current device log is available for this public Host foundation. No private credentials, real device path, board operations or external service access are included.
+
+The prior read-only audit recorded inventory SHA-256 `2CFC20CED9849C8EC6DA061FC023C5B6416E2FFA6A6E9F0FE41467BF3D4F663B`. Its recorded original course source path was unavailable during this continuation, so no new claim of direct inspection of that source tree is made.

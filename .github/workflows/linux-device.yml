@@ -10,6 +10,7 @@ jobs:
   native:
     name: ${{ matrix.compiler }} native PTY
     runs-on: ubuntu-24.04
+    timeout-minutes: 15
     strategy:
       fail-fast: false
       matrix:
@@ -38,6 +39,7 @@ jobs:
   sanitizers:
     name: ASan + UBSan native PTY
     runs-on: ubuntu-24.04
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
       - name: Instrumented build
@@ -59,6 +61,7 @@ jobs:
   aarch64:
     name: AArch64 cross build and QEMU userspace
     runs-on: ubuntu-24.04
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
       - name: Install distribution cross toolchain and QEMU
@@ -88,6 +91,7 @@ jobs:
   module:
     name: x86_64 host Kbuild, no load
     runs-on: ubuntu-24.04
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
       - name: Install distribution headers and tools
