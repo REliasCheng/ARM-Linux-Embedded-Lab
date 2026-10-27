@@ -2,7 +2,7 @@
 
 ## Scope
 
-本页描述源资料能够支持的 ARM64 Embedded Linux 分层关系，并标明每一层当前证据。它不是可启动系统的构建清单。
+本页描述历史资料能够支持的 RK3566 ARM64 系统分层关系。另有独立的 [Host Linux PTY 运行工程](linux-device-runtime.md)；Host 的设备节点证据不表示该 RK3566 系统已启动。
 
 ## Layer Map
 
@@ -37,4 +37,4 @@ RK3566 Peripheral Boundary
 
 - `Present` 表示源资料中存在可定位文件或 metadata。
 - `Reference only` 表示资料说明了流程，但本仓库不包含可执行输入。
-- `Not Provided` 表示没有可公开复核的 build、hardware 或 runtime evidence。
+- `Not Provided` 表示对应历史 RK3566 层没有可公开复核的 build、hardware 或 runtime evidence；新的 Host 与 AArch64 用户态验证分层见 [Verification](verification.md)。

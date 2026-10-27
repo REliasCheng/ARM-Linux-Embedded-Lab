@@ -14,7 +14,7 @@
 
 ## Reproduction Requirements
 
-A future source-based repository would need all of the following before build claims are appropriate:
+A future RK3566 target build would need all of the following before target build claims are appropriate:
 
 1. An identified and redistributable board SDK or upstream source baseline.
 2. Exact kernel revision and matching headers.
@@ -23,6 +23,6 @@ A future source-based repository would need all of the following before build cl
 5. Isolated build output plus retained logs.
 6. Board or QEMU runtime evidence appropriate to the produced artifacts.
 
-## Current Result
+## Current Host and cross-build path
 
-The current public repository is documentation-only. No toolchain was installed and no original source material was modified to make a build pass.
+The repository now contains original C11 Host userspace software, a native Linux PTY integration harness, an Ubuntu 24.04 AArch64 cross-build job and QEMU user-mode execution. See [Linux device runtime](linux-device-runtime.md), [AArch64 verification](aarch64-build-verification.md), and the CI workflow for actual build results. The reviewed Linaro/vendor toolchains and RK3566 kernel tree remain excluded; distribution cross-build success does not establish compatibility with the historical board or kernel ABI.

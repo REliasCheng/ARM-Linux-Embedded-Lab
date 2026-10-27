@@ -35,3 +35,6 @@ Image
 rootfs/
 output/
 build/
+build*/
+.local/
+__pycache__/
