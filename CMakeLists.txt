@@ -1,0 +1,31 @@
+cmake_minimum_required(VERSION 3.20)
+project(arm_linux_device_lab LANGUAGES C)
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_C_EXTENSIONS OFF)
+add_compile_options(-Wall -Wextra -Werror -pedantic)
+
+add_library(frame_protocol STATIC src/frame_protocol.c)
+target_include_directories(frame_protocol PUBLIC include)
+add_executable(test_protocol tests/test_protocol.c)
+target_link_libraries(test_protocol PRIVATE frame_protocol)
+enable_testing()
+add_test(NAME protocol COMMAND test_protocol)
+set_tests_properties(protocol PROPERTIES TIMEOUT 5)
+
+if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+  add_library(linux_device_port STATIC src/linux_device_port.c)
+  target_include_directories(linux_device_port PUBLIC include)
+  add_executable(device_monitor tools/device_monitor.c)
+  target_link_libraries(device_monitor PRIVATE frame_protocol linux_device_port)
+  if(NOT CMAKE_CROSSCOMPILING)
+    find_package(Python3 REQUIRED COMPONENTS Interpreter)
+    foreach(scenario normal malformed disconnect timeout)
+      add_test(NAME pty_${scenario} COMMAND ${Python3_EXECUTABLE}
+        ${CMAKE_CURRENT_SOURCE_DIR}/tests/pty_integration.py
+        --scenario ${scenario} --monitor $<TARGET_FILE:device_monitor>
+        --simulator ${CMAKE_CURRENT_SOURCE_DIR}/tools/pty_device_simulator.py)
+      set_tests_properties(pty_${scenario} PROPERTIES TIMEOUT 12)
+    endforeach()
+  endif()
+endif()
